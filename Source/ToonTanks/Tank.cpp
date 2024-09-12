@@ -28,15 +28,9 @@ void ATank::Tick(float DeltaTime)
         FHitResult Hit;
         PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, Hit);
 
-        DrawDebugSphere(
-        GetWorld(),
-        Hit.ImpactPoint,
-        25.0f,
-        12,
-        FColor::Red,
-        false,
-        -1.0f
-        );
+        DrawDebugSphere(GetWorld(), Hit.ImpactPoint, 25.0f, 12, FColor::Red, false, -1);
+
+        RotateTurret(Hit.ImpactPoint);
     }
 }
 
