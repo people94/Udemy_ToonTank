@@ -40,8 +40,10 @@ private:
 	UPROPERTY(EditAnywhere, Category="Movement")
 	float TurnRate = 90.0f;
 
+	class APlayerController* PlayerControllerRef;
+
+	float ForwardAxis = 1.f;
+
 	void Move(float Value);
 	void Turn(float Value);
-
-	class APlayerController* PlayerControllerRef;
 };

@@ -40,6 +40,8 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
     PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
     PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
+
+    PlayerInputComponent->BindAction(TEXT("Fire"), EInputEvent::IE_Pressed, this, &ATank::Fire);
 }
 
 // Called when the game starts or when spawned
@@ -58,6 +60,8 @@ void ATank::Move(float Value)
     DeltaLocation.X = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
 
     AddActorLocalOffset(DeltaLocation, true);
+
+    ForwardAxis = Value >= 0.f ? 1.f : Value;
 }
 
 void ATank::Turn(float Value)
@@ -65,7 +69,7 @@ void ATank::Turn(float Value)
     FRotator DeltaRotation = FRotator::ZeroRotator;
     
     // Yaw = Value * DeltaTime * TurnRate
-    DeltaRotation.Yaw = Value * UGameplayStatics::GetWorldDeltaSeconds(this) * TurnRate;
+    DeltaRotation.Yaw = Value * UGameplayStatics::GetWorldDeltaSeconds(this) * TurnRate * ForwardAxis;
 
     AddActorLocalRotation(DeltaRotation, true);
 }
