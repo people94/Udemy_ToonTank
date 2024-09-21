@@ -23,6 +23,10 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	APlayerController* GetTankPlayerController() const { return TankPlayerController; }
+
+	void HandleDestruction();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -40,9 +44,7 @@ private:
 	UPROPERTY(EditAnywhere, Category="Movement")
 	float TurnRate = 90.0f;
 
-	class APlayerController* PlayerControllerRef;
-
-	float ForwardAxis = 1.f;
+	class APlayerController* TankPlayerController;
 
 	void Move(float Value);
 	void Turn(float Value);

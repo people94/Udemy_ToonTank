@@ -23,10 +23,10 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-    if(PlayerControllerRef)
+    if(TankPlayerController)
     {
         FHitResult Hit;
-        PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, Hit);
+        TankPlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, Hit);
 
         DrawDebugSphere(GetWorld(), Hit.ImpactPoint, 25.0f, 12, FColor::Red, false, -1);
 
@@ -49,7 +49,15 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-    PlayerControllerRef = Cast<APlayerController>(GetController());
+    TankPlayerController = Cast<APlayerController>(GetController());
+}
+
+void ATank::HandleDestruction()
+{
+    Super::HandleDestruction();
+
+    SetActorHiddenInGame(true);
+    SetActorTickEnabled(false);
 }
 
 void ATank::Move(float Value)
@@ -60,8 +68,6 @@ void ATank::Move(float Value)
     DeltaLocation.X = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
 
     AddActorLocalOffset(DeltaLocation, true);
-
-    ForwardAxis = Value >= 0.f ? 1.f : Value;
 }
 
 void ATank::Turn(float Value)
@@ -69,7 +75,7 @@ void ATank::Turn(float Value)
     FRotator DeltaRotation = FRotator::ZeroRotator;
     
     // Yaw = Value * DeltaTime * TurnRate
-    DeltaRotation.Yaw = Value * UGameplayStatics::GetWorldDeltaSeconds(this) * TurnRate * ForwardAxis;
+    DeltaRotation.Yaw = Value * UGameplayStatics::GetWorldDeltaSeconds(this) * TurnRate;
 
     AddActorLocalRotation(DeltaRotation, true);
 }
