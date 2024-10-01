@@ -34,7 +34,12 @@ void ATower::HandleDestruction()
 
 void ATower::CheckFireCondition()
 {
-    if(IsInFireRange())
+    if (Tank == nullptr) 
+    {
+        return;
+    }
+    
+    if(IsInFireRange() && Tank->bAlive)
     {
         Fire();
     }
