@@ -1,5 +1,21 @@
 [
 	{
+		"file": "D:\\Udemy_UE5\\ToonTank\\Source\\ToonTanks\\ToonTanksPlayerController.cpp",
+		"arguments": [
+			"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe",
+			"@D:\\Udemy_UE5\\ToonTank\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Udemy_UE5\\ToonTank\\Source\\ToonTanks\\ToonTanksPlayerController.h",
+		"arguments": [
+			"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe",
+			"@D:\\Udemy_UE5\\ToonTank\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
 		"file": "D:\\Udemy_UE5\\ToonTank\\Source\\ToonTanks\\ToonTanksGameMode.cpp",
 		"arguments": [
 			"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe",
